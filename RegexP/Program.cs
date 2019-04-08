@@ -6,6 +6,9 @@ namespace RegexP
 {
     class Program
     {
+
+        // IMPORTANT! YOU NEED TO ADD YOUR PASSWORDLIST LIKE ROCKYOU.TXT TO CHECKPWLIST-METHOD
+
         static void Main(string[] args)
         {
             do
@@ -13,18 +16,21 @@ namespace RegexP
             Console.WriteLine("Insert your password and i'll tell you how strong it is!");
             string input = Console.ReadLine();
             RegexP(input);
-            Console.WriteLine("Press Enter/Return to try again. Press anything else to quit.");
-            } while (Console.ReadKey().Key == ConsoleKey.Enter);
+            Console.WriteLine("Press ESC to quit. To continue, press anything else.");
+            } while (Console.ReadKey().Key != ConsoleKey.Escape);
         }
-
+        
         private static void RegexP(string input)
         {
             int score = CheckLenght(input) + CheckPwList(input) + CheckForSpecialCharacters(input) + CheckForUpperCase(input);
             Console.WriteLine("Your password is "+score+"//10");
         }
+
+        //Checks for the occurence of special characters and numbers.
+
         private static int CheckForSpecialCharacters(string input)
         {
-            Regex rx = new Regex(@"!@#$%^&*(),.?':{ }|<>]", RegexOptions.Compiled);
+            Regex rx = new Regex(@"[!@#$%^&*(),.?':{ }|<>]", RegexOptions.Compiled);
             MatchCollection mc = rx.Matches(input);
 
             Regex rx2 = new Regex(@"[0-9]", RegexOptions.Compiled);
@@ -64,6 +70,8 @@ namespace RegexP
             return 0;
         }
 
+        //Checks for the use of upper case letters
+
         private static int CheckForUpperCase(string input)
         {
             Regex rx = new Regex(@"\p{Lu}", RegexOptions.Compiled);
@@ -82,9 +90,12 @@ namespace RegexP
             return 0;
         }
 
+        //Checks if the password can be found in an password-dump such as rockyou.txt. If you want to use another list, it should work.
+        //IMPORTANT! You need to add your pwlist to the streamreader.
+
         private static int CheckPwList(string input)
         {
-            Regex regex = new Regex(@"[0-9]|!@#$%^&*(),.?':{ }|<>");
+            Regex regex = new Regex(@"[0-9|!@#$%^&*(),.?':{ }|<>]");
             string noNumbersAndSpecials = regex.Replace(input, "");
 
             string numberCharacters = input;
@@ -101,7 +112,7 @@ namespace RegexP
             numberCharacters.Replace("9", "q");
 
             string search = input.ToLower();
-            using (StreamReader file = new StreamReader(@"Add your wordlist like rockyou.txt here!"))
+            using (StreamReader file = new StreamReader(@"Insert your passwordlist like rockyou.txt here!"))
             {
                 string line = file.ReadLine();
                 while (line != null)
@@ -127,6 +138,8 @@ namespace RegexP
                 return 2;
             }
         }
+
+        //Check for password lenght
 
         private static int CheckLenght(string input)
         {
