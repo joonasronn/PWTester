@@ -23,7 +23,7 @@ namespace RegexP
         private static void RegexP(string input)
         {
             int score = CheckLenght(input) + CheckPwList(input) + CheckForSpecialCharacters(input) + CheckForUpperCase(input);
-            Console.WriteLine("Your password is "+score+"//10");
+            Console.WriteLine("Your password is "+score+"/10");
         }
 
         //Checks for the occurence of special characters and numbers.
