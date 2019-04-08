@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.539
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegexP", "RegexP\RegexP.csproj", "{570EDFAC-C015-4C5C-BC1A-516527246351}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{570EDFAC-C015-4C5C-BC1A-516527246351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{570EDFAC-C015-4C5C-BC1A-516527246351}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{570EDFAC-C015-4C5C-BC1A-516527246351}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{570EDFAC-C015-4C5C-BC1A-516527246351}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49C9407F-2F31-4D94-A043-28950EFE1970}
+	EndGlobalSection
+EndGlobal
