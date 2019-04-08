@@ -25,8 +25,24 @@ namespace RegexP
 
         private static string CheckPwList(string input)
         {
+            Regex regex = new Regex(@"[0-9|!@#$%^&*(),.?':{ }|<>]");
+            string noNumbersAndSpecials = regex.Replace("input", "");
+
+            string numberCharacters = input;
+
+            numberCharacters.Replace("0", "o");
+            numberCharacters.Replace("1", "i");
+            numberCharacters.Replace("2", "z");
+            numberCharacters.Replace("3", "e");
+            numberCharacters.Replace("4", "a");
+            numberCharacters.Replace("5", "s");
+            numberCharacters.Replace("6", "b");
+            numberCharacters.Replace("7", "t");
+            numberCharacters.Replace("8", "b");
+            numberCharacters.Replace("9", "q");
+
             string search = input.ToLower();
-            using (StreamReader file = new StreamReader("Path to your rockyou.txt file"))
+            using (StreamReader file = new StreamReader(@"Your rockyou.txt path here"))
             {
                 string line = file.ReadLine();
                 while (line != null)
@@ -34,6 +50,14 @@ namespace RegexP
                     if (line.Contains(search))
                     {
                         return "Your password is too common and easy to guess.";
+                    }
+                    if (line.Contains(noNumbersAndSpecials))
+                    {
+                        return "Your password contains common words and some extra characters. Better than plain text but still not unique.";
+                    }
+                    if (line.Contains(numberCharacters))
+                    {
+                        return "Your password contains common words and numbers replacing characters. Better than plain text but still not unique.";
                     }
                     line = file.ReadLine();
                 }
