@@ -26,7 +26,7 @@ namespace RegexP
         private static string CheckPwList(string input)
         {
             string search = input.ToLower();
-            using (StreamReader file = new StreamReader("Path to your rockyou.txt file "))
+            using (StreamReader file = new StreamReader("Path to your rockyou.txt file"))
             {
                 string line = file.ReadLine();
                 while (line != null)
